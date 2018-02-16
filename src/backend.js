@@ -16,7 +16,9 @@ export function nameSearch(term) {
   });
 
   promise.then(function(response) {
-    let body = JSON.parse(response);
-    $(".showDoctors").text(`Doctor's name: ${body.data.first_name}`)
-});
-}
+    let data = JSON.parse(response);
+    $(".showDoctors").text(`Doctor's name: ${data[0].profile.first_name}`);
+  }, function(error) {
+    $(".showErrors").text(`There was an error processing your request: ${error.message}`);
+  });
+};
