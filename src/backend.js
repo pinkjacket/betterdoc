@@ -14,4 +14,9 @@ export function nameSearch(term) {
     request.open("GET", url, true);
     request.send();
   });
+
+  promise.then(function(response) {
+    let body = JSON.parse(response);
+    $(".showDoctors").text(`Doctor's name: ${body.data.first_name}`)
+});
 }
