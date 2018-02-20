@@ -10,8 +10,11 @@ export function nameSearch(name) {
       format: 'json'
     },
     success: function(response) {
+      if(response.data.length === 0){
+        $(".showErrors").text("No doctors found, sorry.")
+      }
       for(let i = 0; i < response.data.length; i++) {
-        console.log(`${response.data[i].profile.first_name}`);
+        $(".showDoctors").append(`${response.data[i].profile.first_name}`);
       }
     },
 
