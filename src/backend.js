@@ -10,8 +10,14 @@ export function nameSearch(name) {
       format: 'json'
     },
     success: function(response) {
-      console.log(`${response.data[0].profile.first_name}`);
+      for(let i = 0; i < response.data.length; i++) {
+        console.log(`${response.data[i].profile.first_name}`);
+      }
     },
+
+    //   })
+    //
+    // },
     error:function() {
       $('.showErrors').text("Error!")
     }
