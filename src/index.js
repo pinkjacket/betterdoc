@@ -8,12 +8,15 @@ $(document).ready(function() {
     $('#docName').val("");
     $('.showDoctors').empty();
     $('.noDoctors').empty();
+    $('.showErrors').empty();
     let response = nameSearch(name);
   });
   $('#conditionSearch').click(function() {
     let cond = $('#condition').val();
     $('#condition').val("");
     $('.showDoctors').empty();
+    $('.noDoctors').empty();
+    $('.showErrors').empty();
     let response = conditionSearch(cond);
   });
 

@@ -18,11 +18,12 @@ _This program uses the Better Doctor API to find doctors in the Portland area, s
 
 ## Known bugs
 
-* _Currently insists I'm querying the API in the wrong format no matter how I try to structure it. Until I can search for a name and at least pull that name back out of the results I'm not sure how I'm going to get it to do anything else._
+* _not currently returning specific error messages_
+* _css possibly not working_
 
 ## Proposed Future Functionality
 
-* _working searches_
+* _make it say yes or no on accepting patients instead of just showing the boolean because true/false there looks weird_
 * _look for doctors in other places_
 
 ## Technologies Used
