@@ -14,7 +14,8 @@ export function nameSearch(name) {
         $(".showErrors").text("No doctors found, sorry.")
       }
       for(let i = 0; i < response.data.length; i++) {
-        $(".showDoctors").append(`${response.data[i].profile.first_name}`);
+        let name = response.data[i].profile.first_name + response.data[i].profile.last_name;
+        $(".showDoctors").append(name);
       }
     },
 
