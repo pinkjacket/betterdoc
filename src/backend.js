@@ -1,26 +1,61 @@
 var apiKey = require("./../.env").apiKey;
 
-
-
-export function nameSearch(term) {
-  let promise = new Promise(function(resolve, reject) {
-    let request = new XMLHttpRequest();
-    let url = term;
-    request.onload = function() {
-      if (this.status === 200) {
-        resolve(request.response);
+export function nameSearch(name) {
+  $.ajax({
+    url: `https://api.betterdoctor.com/2016-03-01/doctors?name=${name}&location=or-portland&skip=0&limit=10&user_key=${apiKey}`,
+    type: 'GET',
+    data: {
+      format: 'json'
+    },
+    success: function(response) {
+      if(response.data.length === 0){
+        $(".noDoctors").text("No doctors found, sorry.")
       } else {
-        reject(Error(request.statusText));
+        for(let i = 0; i < response.data.length; i++) {
+          let name = response.data[i].profile.first_name + " " + response.data[i].profile.last_name;
+          let address1 = response.data[i].practices[0].visit_address.street;
+          let address2 = response.data[i].practices[0].visit_address.zip;
+          let phone = response.data[i].practices[0].phones[0].number;
+          let newpatients = response.data[i].practices[0].accepts_new_patients;
+          function patients(newpatients){
+            return (newpatients ? "Yes!" : "No");
+          }
+          $(".showDoctors").append("<ul>" + "<li>Name: " + name + "</li>" + "<p></p>" + "Address: " + address1 + "<p></p>" + address2 + "<p></p>" + "Phone#: " + phone + "<p></p>" + "Open for new patients? " + patients(newpatients) + "</ul>");
+        }
       }
+    },
+    error:function() {
+      $('.showErrors').text(`Error! Something went wrong.`);
     }
-    request.open("GET", url, true);
-    request.send();
   });
+}
 
-  promise.then(function(response) {
-    let body = JSON.parse(response);
-    $(".showDoctors").text(`Doctor's name: ${body.data.profile.last_name}`);
-  }, function(error) {
-    $(".showErrors").text(`There was an error processing your request: ${error.message}`);
+export function conditionSearch(cond) {
+  $.ajax({
+    url: `https://api.betterdoctor.com/2016-03-01/doctors?query=${cond}&location=or-portland&skip=0&limit=10&user_key=${apiKey}`,
+    type: 'GET',
+    data: {
+      format: 'json'
+    },
+    success: function(response) {
+      if(response.data.length === 0){
+        $(".noDoctors").text("No doctors found, sorry.")
+      } else {
+        for(let i = 0; i < response.data.length; i++) {
+          let name = response.data[i].profile.first_name + " " + response.data[i].profile.last_name;
+          let address1 = response.data[i].practices[0].visit_address.street;
+          let address2 = response.data[i].practices[0].visit_address.zip;
+          let phone = response.data[i].practices[0].phones[0].number;
+          let newpatients = response.data[i].practices[0].accepts_new_patients;
+          function patients(newpatients){
+            return (newpatients ? "Yes!" : "No");
+          }
+          $(".showDoctors").append("<ul>" + "<li>Name: " + name + "</li>" + "<p></p>" + "Address: " + address1 + "<p></p>" + address2 + "<p></p>" + "Phone#: " + phone + "<p></p>" + "Open for new patients? " + patients(newpatients) + "</ul>");
+        }
+      }
+    },
+    error:function() {
+      $('.showErrors').text("Error! Something went wrong.")
+    }
   });
-};
+}

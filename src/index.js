@@ -1,14 +1,25 @@
 var apiKey = require("./../.env").apiKey;
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./templates/styles.css";
 import { nameSearch } from "./backend.js";
+import { conditionSearch } from "./backend.js"
 
 $(document).ready(function() {
-  $('#docName').click(function() {
+  $('#nameSearch').click(function() {
     let name = $('#docName').val();
     $('#docName').val("");
-
-    let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${name}&location=or-portland&skip=0&limit=10&user_key=${apiKey}`;
-    let response = nameSearch(url);
-    
-
+    $('.showDoctors').empty();
+    $('.noDoctors').empty();
+    $('.showErrors').empty();
+    let response = nameSearch(name);
   });
+  $('#conditionSearch').click(function() {
+    let cond = $('#condition').val();
+    $('#condition').val("");
+    $('.showDoctors').empty();
+    $('.noDoctors').empty();
+    $('.showErrors').empty();
+    let response = conditionSearch(cond);
+  });
+
 });
