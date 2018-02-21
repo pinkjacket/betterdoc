@@ -10,17 +10,18 @@ export function nameSearch(name) {
     success: function(response) {
       if(response.data.length === 0){
         $(".noDoctors").text("No doctors found, sorry.")
-      }
-      for(let i = 0; i < response.data.length; i++) {
-        let name = response.data[i].profile.first_name + " " + response.data[i].profile.last_name;
-        let address1 = response.data[i].practices[0].visit_address.street;
-        let address2 = response.data[i].practices[0].visit_address.zip;
-        let phone = response.data[i].practices[0].phones[0].number;
-        let newpatients = response.data[i].practices[0].accepts_new_patients;
-        function patients(newpatients){
-          return (newpatients ? "Yes!" : "No");
+      } else {
+        for(let i = 0; i < response.data.length; i++) {
+          let name = response.data[i].profile.first_name + " " + response.data[i].profile.last_name;
+          let address1 = response.data[i].practices[0].visit_address.street;
+          let address2 = response.data[i].practices[0].visit_address.zip;
+          let phone = response.data[i].practices[0].phones[0].number;
+          let newpatients = response.data[i].practices[0].accepts_new_patients;
+          function patients(newpatients){
+            return (newpatients ? "Yes!" : "No");
+          }
+          $(".showDoctors").append("<ul>" + "<li>Name: " + name + "</li>" + "<p></p>" + "Address: " + address1 + "<p></p>" + address2 + "<p></p>" + "Phone#: " + phone + "<p></p>" + "Open for new patients? " + patients(newpatients) + "</ul>");
         }
-        $(".showDoctors").append("<ul>" + "<li>Name: " + name + "</li>" + "<p></p>" + "Address: " + address1 + "<p></p>" + address2 + "<p></p>" + "Phone#: " + phone + "<p></p>" + "Open for new patients? " + patients(newpatients) + "</ul>");
       }
     },
     error:function() {
@@ -39,17 +40,18 @@ export function conditionSearch(cond) {
     success: function(response) {
       if(response.data.length === 0){
         $(".noDoctors").text("No doctors found, sorry.")
-      }
-      for(let i = 0; i < response.data.length; i++) {
-        let name = response.data[i].profile.first_name + " " + response.data[i].profile.last_name;
-        let address1 = response.data[i].practices[0].visit_address.street;
-        let address2 = response.data[i].practices[0].visit_address.zip;
-        let phone = response.data[i].practices[0].phones[0].number;
-        let newpatients = response.data[i].practices[0].accepts_new_patients;
-        function patients(newpatients){
-          return (newpatients ? "Yes!" : "No");
+      } else {
+        for(let i = 0; i < response.data.length; i++) {
+          let name = response.data[i].profile.first_name + " " + response.data[i].profile.last_name;
+          let address1 = response.data[i].practices[0].visit_address.street;
+          let address2 = response.data[i].practices[0].visit_address.zip;
+          let phone = response.data[i].practices[0].phones[0].number;
+          let newpatients = response.data[i].practices[0].accepts_new_patients;
+          function patients(newpatients){
+            return (newpatients ? "Yes!" : "No");
+          }
+          $(".showDoctors").append("<ul>" + "<li>Name: " + name + "</li>" + "<p></p>" + "Address: " + address1 + "<p></p>" + address2 + "<p></p>" + "Phone#: " + phone + "<p></p>" + "Open for new patients? " + patients(newpatients) + "</ul>");
         }
-        $(".showDoctors").append("<ul>" + "<li>Name: " + name + "</li>" + "<p></p>" + "Address: " + address1 + "<p></p>" + address2 + "<p></p>" + "Phone#: " + phone + "<p></p>" + "Open for new patients? " + patients(newpatients) + "</ul>");
       }
     },
     error:function() {
