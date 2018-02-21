@@ -17,7 +17,10 @@ export function nameSearch(name) {
         let address2 = response.data[i].practices[0].visit_address.zip;
         let phone = response.data[i].practices[0].phones[0].number;
         let newpatients = response.data[i].practices[0].accepts_new_patients;
-        $(".showDoctors").append("<ul>" + "<li>Name: " + name + "</li>" + "<p></p>" + "Address: " + address1 + "<p></p>" + address2 + "<p></p>" + "Phone#: " + phone + "<p></p>" + "Open for new patients? " + newpatients + "</ul>");
+        function patients(newpatients){
+          return (newpatients ? "Yes!" : "No");
+        }
+        $(".showDoctors").append("<ul>" + "<li>Name: " + name + "</li>" + "<p></p>" + "Address: " + address1 + "<p></p>" + address2 + "<p></p>" + "Phone#: " + phone + "<p></p>" + "Open for new patients? " + patients(newpatients) + "</ul>");
       }
     },
     error:function() {
@@ -43,7 +46,10 @@ export function conditionSearch(cond) {
         let address2 = response.data[i].practices[0].visit_address.zip;
         let phone = response.data[i].practices[0].phones[0].number;
         let newpatients = response.data[i].practices[0].accepts_new_patients;
-        $(".showDoctors").append("<ul>" + "<li>Name: " + name + "</li>" + "<p></p>" + "Address: " + address1 + "<p></p>" + address2 + "<p></p>" + "Phone#: " + phone + "<p></p>" + "Open for new patients? " + newpatients + "</ul>");
+        function patients(newpatients){
+          return (newpatients ? "Yes!" : "No");
+        }
+        $(".showDoctors").append("<ul>" + "<li>Name: " + name + "</li>" + "<p></p>" + "Address: " + address1 + "<p></p>" + address2 + "<p></p>" + "Phone#: " + phone + "<p></p>" + "Open for new patients? " + patients(newpatients) + "</ul>");
       }
     },
     error:function() {
