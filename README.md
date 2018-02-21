@@ -18,13 +18,12 @@ _This program uses the Better Doctor API to find doctors in the Portland area, s
 
 ## Known bugs
 
-* _not currently returning specific error messages_
-* _css possibly not working_
+* _not currently returning specific error messages, you'll get one that just says "Error!" but it won't spit out a code or a message right now_
 
 ## Proposed Future Functionality
 
-* _make it say yes or no on accepting patients instead of just showing the boolean because true/false there looks weird_
 * _look for doctors in other places_
+* _returned list could be more aesthetically pleasing_
 
 ## Technologies Used
 
