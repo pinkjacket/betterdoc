@@ -1,4 +1,6 @@
 var apiKey = require("./../.env").apiKey;
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./templates/styles.css";
 import { nameSearch } from "./backend.js";
 import { conditionSearch } from "./backend.js"
 
