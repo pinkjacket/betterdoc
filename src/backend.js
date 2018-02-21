@@ -25,7 +25,7 @@ export function nameSearch(name) {
       }
     },
     error:function() {
-      $('.showErrors').text(`Error! Something went wrong: ${response.message}`);
+      $('.showErrors').text(`Error! Something went wrong.`);
     }
   });
 }
@@ -55,7 +55,7 @@ export function conditionSearch(cond) {
       }
     },
     error:function() {
-      $('.showErrors').text("Error!")
+      $('.showErrors').text("Error! Something went wrong.")
     }
   });
 }
